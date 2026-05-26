@@ -1,0 +1,244 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #05070a;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+#loading-screen,
+#start-screen,
+#map-screen {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+#loading-screen {
+  background: #05070a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 30;
+}
+
+.loading-text {
+  letter-spacing: 4px;
+  color: #7df9ff;
+  animation: blink 1s infinite;
+}
+
+#start-screen {
+  background:
+    linear-gradient(rgba(5, 7, 10, 0.5), rgba(5, 7, 10, 0.9)),
+    radial-gradient(circle at center, #183047, #05070a 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: transform 1s ease-in-out;
+}
+
+#map-screen.map-active .side-hud {
+  transform: translate(0, -50%);
+}
+
+#start-screen {
+  background:
+    linear-gradient(rgba(5, 7, 10, 0.5), rgba(5, 7, 10, 0.9)),
+    radial-gradient(circle at center, #183047, #05070a 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+  transition: opacity 0.8s ease;
+}
+
+#start-screen.start-exit {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.code-log {
+  position: absolute;
+  top: 24px;
+  left: 28px;
+  width: 420px;
+  font-family: monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  color: rgba(125, 249, 255, 0.35);
+  letter-spacing: 1px;
+  white-space: pre-line;
+  pointer-events: none;
+}
+
+.start-content {
+  text-align: center;
+}
+
+.start-content h1 {
+  font-size: 64px;
+  letter-spacing: 8px;
+  margin-bottom: 16px;
+}
+
+.start-content p {
+  color: #b8dce0;
+  letter-spacing: 2px;
+  margin-bottom: 80px;
+}
+
+.press-text {
+  color: #7df9ff;
+  letter-spacing: 4px;
+  animation: blink 1.2s infinite;
+}
+
+#map-screen {
+  background:
+    radial-gradient(circle at center, #183047, #05070a 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.map-bg {
+  position: absolute;
+  inset: 0;
+
+  background-image: url("assets/illustration-moon.png");
+  background-size: cover;
+  background-position: center;
+
+  opacity: 0.82;
+
+  animation: mapDrift 45s linear infinite;
+}
+
+.map-overlay {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at center, rgba(24, 48, 71, 0.25), rgba(5, 7, 10, 0.95) 90%),
+    linear-gradient(rgba(5, 7, 10, 0.35), rgba(5, 7, 10, 0.75));
+
+  pointer-events: none;
+}
+
+#map-screen h2 {
+  position: relative;
+  font-size: 48px;
+  letter-spacing: 6px;
+  color: #7df9ff;
+}
+
+.map-grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(rgba(125, 249, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 249, 255, 0.055) 1px, transparent 1px);
+
+  background-size: 60px 60px;
+  opacity: 0.6;
+
+  animation: mapMove 18s linear infinite;
+
+  pointer-events: none;
+}
+
+.side-hud {
+  position: absolute;
+  right: 48px;
+  top: 50%;
+  transform: translate(120%, -50%);
+  width: 260px;
+  min-height: 420px;
+  padding: 24px;
+
+  border: 1px solid rgba(125, 249, 255, 0.35);
+  background: rgba(5, 12, 18, 0.72);
+  backdrop-filter: blur(8px);
+  box-shadow:
+    0 0 24px rgba(125, 249, 255, 0.12),
+    inset 0 0 24px rgba(125, 249, 255, 0.04);
+
+  z-index: 15;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hud-title {
+  color: rgba(125, 249, 255, 0.9);
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-bottom: 28px;
+}
+
+.hud-item {
+  padding: 14px 12px;
+  margin-bottom: 12px;
+
+  color: rgba(220, 250, 255, 0.8);
+  border-left: 2px solid rgba(125, 249, 255, 0.4);
+  background: rgba(125, 249, 255, 0.05);
+
+  letter-spacing: 2px;
+}
+
+.hide-loading {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
+}
+
+.start-exit .start-content {
+  transform: translateY(-80px);
+  opacity: 0;
+}
+
+.start-content {
+  text-align: center;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+@keyframes mapMove {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 600px;
+  }
+}
+
+@keyframes mapDrift {
+  from {
+    transform: scale(1.05) translateY(0);
+  }
+
+  to {
+    transform: scale(1.05) translateY(40px);
+  }
+}
