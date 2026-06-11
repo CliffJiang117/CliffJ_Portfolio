@@ -1,41 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <title>Cliff Jiang Portfolio</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
-  <div id="loading-screen">
+  <!-- =========================================================
+    LOADING SCREEN
+      Shows the fake terminal boot sequence before the site opens.
+       Controlled by script.js through:
+        #code-log
+        hide-loading
+  ========================================================== -->
+  <section id="loading-screen" class="screen loading-screen" aria-label="Loading screen">
     <div class="code-log" id="code-log"></div>
     <div class="loading-text">LOADING...</div>
-  </div>
+  </section>
 
-  <section id="start-screen">
+
+  <!-- =========================================================
+    START SCREEN
+      First interactive screen after loading.
+       User clicks or presses a key to enter the main portfolio map.
+       Controlled by script.js through:
+        start-exit
+  ========================================================== -->
+  <section id="start-screen" class="screen start-screen" aria-label="Start screen">
     <div class="start-content">
-        <h1>WELCOME ABOARD</h1>
-        <p>INTERACTIVE ARCHIVE  ONLINE</p>
-        <div class="press-text">PRESS TO OPEN</div>
+      <h1>WELCOME ABOARD</h1>
+      <p>You have arrived at Cliff Jiang's portfolio</p>
+      <div class="press-text">PRESS TO OPEN</div>
     </div>
   </section>
 
- <section id="map-screen">
-    <div class="map-bg"></div>
-    <div class="map-overlay"></div>
-    <div class="map-grid"></div>
 
-    <aside class="side-hud">
-        <div class="hud-title">ARCHIVE</div>
-        <div class="hud-item">ABOUT</div>
-        <div class="hud-item">GAMES</div>
-        <div class="hud-item">ART</div>
-        <div class="hud-item">RESUME</div>
+  <!-- =========================================================
+    MAIN MAP SCREEN
+      Main visual area of the website.
+       Includes:
+        map background
+        dark overlay
+        grid overlay
+        right-side navigation UI
+        temporary title text(will be replaced after map update)
+       Controlled by script.js through:
+        .map-active
+  ========================================================== -->
+  <main id="map-screen" class="screen map-screen" aria-label="Project map screen">
+    <!-- Background image layer -->
+    <div class="map-bg" aria-hidden="true"></div>
+
+    <!-- Dark gradient / vignette overlay -->
+    <div class="map-overlay" aria-hidden="true"></div>
+
+    <!-- Sci-fi grid overlay -->
+    <div class="map-grid" aria-hidden="true"></div>
+
+
+    <!-- =======================================================
+      RIGHT SIDE UI
+         Current navigation structure:
+          ABOUT
+          PORTFOLIO
+            GAME
+            ART WORK
+            SOUND
+          CV
+          CONTACT
+    ======================================================== -->
+    <aside class="right-ui" aria-label="Right side interface">
+      <nav class="right-nav" id="rightNav" aria-label="Main navigation">
+        <!-- About button -->
+        <button class="nav-block" type="button" data-section="about">
+          <span class="nav-label">ABOUT</span>
+        </button>
+
+
+        <!-- Portfolio parent block -->
+        <div class="nav-group portfolio-group" id="portfolioGroup">
+          <button
+            class="nav-block portfolio-main"
+            id="portfolioBtn"
+            type="button"
+            aria-expanded="false"
+            aria-controls="portfolioSubmenu"
+          >
+            <span class="nav-label">PORTFOLIO</span>
+            <span class="nav-arrow" aria-hidden="true">⌄</span>
+          </button>
+
+          <!-- Portfolio child blocks -->
+          <div class="portfolio-submenu" id="portfolioSubmenu">
+            <button class="sub-block" type="button" data-section="game">
+              GAME
+            </button>
+
+            <button class="sub-block" type="button" data-section="art">
+              ART WORK
+            </button>
+
+            <button class="sub-block" type="button" data-section="sound">
+              SOUND
+            </button>
+          </div>
+        </div>
+
+
+        <!-- CV button -->
+        <button class="nav-block" type="button" data-section="cv">
+          <span class="nav-label">CV</span>
+        </button>
+
+
+        <!-- Contact button -->
+        <button class="nav-block" type="button" data-section="contact">
+          <span class="nav-label">CONTACT</span>
+        </button>
+      </nav>
     </aside>
 
-    <h2>PROJECT MAP</h2>
- </section>
 
+    <!-- Temporary center title. This will be replaced by actual content panels. -->
+    <h2 class="map-title">PROJECT MAP</h2>
+  </main>
+
+
+  <!-- Main JavaScript -->
   <script src="script.js"></script>
 </body>
 </html>

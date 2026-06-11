@@ -1,68 +1,93 @@
+/* =========================================================
+
+   Structure:
+   1. Global reset / design variables
+   2. Shared screen layout
+   3. Loading screen
+   4. Start screen
+   5. Map screen
+   6. Navigation UI
+   7. Portfolio submenu
+   8. Animations
+   9. Responsive layout
+========================================================= */
+
+
+/* =========================================================
+   1. GLOBAL RESET / DESIGN VARIABLES
+========================================================= */
+
+:root {
+  --color-bg: #05070a;
+  --color-bg-soft: #08121e;
+  --color-cyan: #7df9ff;
+  --color-cyan-soft: rgba(125, 249, 255, 0.45);
+  --color-text: rgba(230, 250, 255, 0.92);
+  --color-muted: #b8dce0;
+
+  --nav-width: 270px;
+  --nav-right-offset: 28px;
+
+  --transition-fast: 0.25s ease;
+  --transition-medium: 0.45s ease;
+  --transition-slow: 0.8s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+html,
 body {
-  background: #05070a;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
   color: white;
   font-family: Arial, sans-serif;
   overflow: hidden;
 }
 
-#loading-screen,
-#start-screen,
-#map-screen {
+button {
+  font: inherit;
+}
+
+
+/* =========================================================
+   2. SHARED SCREEN LAYOUT
+   All major screens cover the whole viewport.
+========================================================= */
+
+.screen {
   position: fixed;
   inset: 0;
   width: 100vw;
   height: 100vh;
 }
 
-#loading-screen {
-  background: #05070a;
+
+/* =========================================================
+   3. LOADING SCREEN
+   Fake terminal boot sequence before the start screen.
+   JS adds .hide-loading after the boot text finishes.
+========================================================= */
+
+.loading-screen {
+  background: var(--color-bg);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 30;
 }
 
-.loading-text {
-  letter-spacing: 4px;
-  color: #7df9ff;
-  animation: blink 1s infinite;
-}
-
-#start-screen {
-  background:
-    linear-gradient(rgba(5, 7, 10, 0.5), rgba(5, 7, 10, 0.9)),
-    radial-gradient(circle at center, #183047, #05070a 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  transition: transform 1s ease-in-out;
-}
-
-#map-screen.map-active .side-hud {
-  transform: translate(0, -50%);
-}
-
-#start-screen {
-  background:
-    linear-gradient(rgba(5, 7, 10, 0.5), rgba(5, 7, 10, 0.9)),
-    radial-gradient(circle at center, #183047, #05070a 70%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-  transition: opacity 0.8s ease;
-}
-
-#start-screen.start-exit {
+.loading-screen.hide-loading {
   opacity: 0;
   pointer-events: none;
+  transition: opacity 0.6s ease;
 }
 
 .code-log {
@@ -70,17 +95,58 @@ body {
   top: 24px;
   left: 28px;
   width: 420px;
-  font-family: monospace;
+
+  font-family: "Courier New", monospace;
   font-size: 13px;
   line-height: 1.6;
-  color: rgba(125, 249, 255, 0.35);
   letter-spacing: 1px;
   white-space: pre-line;
+
+  color: rgba(125, 249, 255, 0.35);
+  pointer-events: none;
+}
+
+.loading-text {
+  color: var(--color-cyan);
+  letter-spacing: 4px;
+  animation: blink 1s infinite;
+}
+
+
+/* =========================================================
+   4. START SCREEN
+   First interactive screen after loading.
+   JS adds .start-exit when the user enters the site.
+========================================================= */
+
+.start-screen {
+  background:
+    linear-gradient(rgba(5, 7, 10, 0.5), rgba(5, 7, 10, 0.9)),
+    radial-gradient(circle at center, #183047, var(--color-bg) 70%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  z-index: 20;
+  transition: opacity var(--transition-slow);
+}
+
+.start-screen.start-exit {
+  opacity: 0;
   pointer-events: none;
 }
 
 .start-content {
   text-align: center;
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.6s ease;
+}
+
+.start-screen.start-exit .start-content {
+  transform: translateY(-80px);
+  opacity: 0;
 }
 
 .start-content h1 {
@@ -90,25 +156,45 @@ body {
 }
 
 .start-content p {
-  color: #b8dce0;
+  color: var(--color-muted);
   letter-spacing: 2px;
   margin-bottom: 80px;
 }
 
 .press-text {
-  color: #7df9ff;
+  color: var(--color-cyan);
   letter-spacing: 4px;
   animation: blink 1.2s infinite;
 }
 
-#map-screen {
+
+/* =========================================================
+   5. MAP SCREEN
+   Main portfolio screen.
+   JS adds .map-active when the user enters the site.
+========================================================= */
+
+.map-screen {
   background:
-    radial-gradient(circle at center, #183047, #05070a 70%);
+    radial-gradient(circle at center, #183047, var(--color-bg) 70%);
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   z-index: 10;
   overflow: hidden;
+
+  opacity: 0;
+  transform: scale(1.02);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.map-screen.map-active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .map-bg {
@@ -120,7 +206,6 @@ body {
   background-position: center;
 
   opacity: 0.82;
-
   animation: mapDrift 45s linear infinite;
 }
 
@@ -135,13 +220,6 @@ body {
   pointer-events: none;
 }
 
-#map-screen h2 {
-  position: relative;
-  font-size: 48px;
-  letter-spacing: 6px;
-  color: #7df9ff;
-}
-
 .map-grid {
   position: absolute;
   inset: 0;
@@ -149,76 +227,187 @@ body {
   background-image:
     linear-gradient(rgba(125, 249, 255, 0.055) 1px, transparent 1px),
     linear-gradient(90deg, rgba(125, 249, 255, 0.055) 1px, transparent 1px);
-
   background-size: 60px 60px;
-  opacity: 0.6;
 
+  opacity: 0.6;
   animation: mapMove 18s linear infinite;
 
   pointer-events: none;
 }
 
-.side-hud {
-  position: absolute;
-  right: 48px;
+.map-title {
+  position: relative;
+  z-index: 2;
+
+  font-size: 48px;
+  letter-spacing: 6px;
+  color: var(--color-cyan);
+}
+
+
+/* =========================================================
+   6. NAVIGATION UI
+   The menu is fixed on the right side of the screen.
+========================================================= */
+
+.right-ui {
+  position: fixed;
+  right: var(--nav-right-offset);
   top: 50%;
-  transform: translate(120%, -50%);
-  width: 260px;
-  min-height: 420px;
-  padding: 24px;
+  transform: translateY(-50%);
 
-  border: 1px solid rgba(125, 249, 255, 0.35);
-  background: rgba(5, 12, 18, 0.72);
-  backdrop-filter: blur(8px);
-  box-shadow:
-    0 0 24px rgba(125, 249, 255, 0.12),
-    inset 0 0 24px rgba(125, 249, 255, 0.04);
-
-  z-index: 15;
-  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+  width: var(--nav-width);
+  z-index: 40;
 }
 
-.hud-title {
-  color: rgba(125, 249, 255, 0.9);
-  font-size: 14px;
-  letter-spacing: 4px;
-  margin-bottom: 28px;
+.right-nav {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.hud-item {
-  padding: 14px 12px;
-  margin-bottom: 12px;
-
-  color: rgba(220, 250, 255, 0.8);
-  border-left: 2px solid rgba(125, 249, 255, 0.4);
-  background: rgba(125, 249, 255, 0.05);
-
+.nav-block,
+.portfolio-main,
+.sub-block {
+  font-family: "Courier New", monospace;
   letter-spacing: 2px;
-}
+  color: var(--color-text);
 
-.hide-loading {
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.6s ease;
-}
+  background: rgba(8, 18, 30, 0.78);
+  border: 1px solid rgba(105, 220, 255, 0.35);
 
-.start-exit .start-content {
-  transform: translateY(-80px);
-  opacity: 0;
-}
+  box-shadow:
+    inset 0 0 18px rgba(80, 200, 255, 0.08),
+    0 0 14px rgba(80, 200, 255, 0.12);
 
-.start-content {
-  text-align: center;
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+
   transition:
-    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
-    opacity 0.6s ease;
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
 }
 
+.nav-block,
+.portfolio-main {
+  width: 100%;
+  height: 76px;
+  padding: 0 24px;
+
+  display: flex;
+  align-items: center;
+
+  border-radius: 18px 4px 4px 18px;
+}
+
+.nav-label {
+  display: inline-block;
+}
+
+.nav-arrow {
+  margin-left: auto;
+  color: rgba(120, 230, 255, 0.95);
+  transition: transform var(--transition-fast);
+}
+
+.nav-block:hover,
+.portfolio-main:hover,
+.sub-block:hover {
+  transform: translateX(-6px);
+  border-color: rgba(120, 235, 255, 0.8);
+
+  box-shadow:
+    inset 0 0 22px rgba(80, 220, 255, 0.13),
+    0 0 24px rgba(80, 220, 255, 0.28);
+}
+
+
+/* =========================================================
+   7. PORTFOLIO SUBMENU
+   Portfolio works as the parent block
+   Child blocks are visually wrapped by the parent, but slightly
+   extend to the left.
+========================================================= */
+
+.portfolio-group {
+  position: relative;
+
+  background: rgba(5, 20, 34, 0.62);
+  border: 1px solid rgba(80, 220, 255, 0.45);
+  border-radius: 20px 4px 4px 20px;
+
+  box-shadow:
+    inset 0 0 26px rgba(50, 190, 255, 0.08),
+    0 0 22px rgba(50, 190, 255, 0.18);
+
+  overflow: visible;
+}
+
+.portfolio-main {
+  border: none;
+  background: rgba(20, 65, 85, 0.42);
+  box-shadow: none;
+  color: rgba(110, 235, 255, 0.95);
+}
+
+.portfolio-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  padding: 10px 14px 16px 14px;
+
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+
+  transition:
+    max-height 0.35s ease,
+    opacity 0.25s ease;
+}
+
+.portfolio-group.open .portfolio-submenu {
+  max-height: 240px;
+  opacity: 1;
+}
+
+.portfolio-group.open .nav-arrow {
+  transform: rotate(180deg);
+}
+
+.sub-block {
+  height: 58px;
+
+  /*
+    This is the key visual trick:
+    the child block is wider than the parent and moves left,
+    so it looks like it grows out of the Portfolio block.
+  */
+  width: calc(100% + 28px);
+  margin-left: -28px;
+  padding-left: 40px;
+
+  text-align: left;
+  font-size: 14px;
+
+  border-radius: 16px 4px 4px 16px;
+}
+
+
+/* =========================================================
+   8. ANIMATIONS
+========================================================= */
 
 @keyframes blink {
-  0%, 100% {
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.35;
   }
@@ -228,6 +417,7 @@ body {
   from {
     background-position: 0 0;
   }
+
   to {
     background-position: 0 600px;
   }
@@ -240,5 +430,41 @@ body {
 
   to {
     transform: scale(1.05) translateY(40px);
+  }
+}
+
+
+/* =========================================================
+   9. RESPONSIVE LAYOUT
+   Need to redesign the mobile version
+========================================================= */
+
+@media (max-width: 800px) {
+  .start-content h1 {
+    font-size: 40px;
+    letter-spacing: 4px;
+  }
+
+  .map-title {
+    font-size: 32px;
+    letter-spacing: 4px;
+  }
+
+  .right-ui {
+    right: 16px;
+    width: 220px;
+  }
+
+  .nav-block,
+  .portfolio-main {
+    height: 64px;
+    padding: 0 18px;
+  }
+
+  .sub-block {
+    height: 52px;
+    width: calc(100% + 20px);
+    margin-left: -20px;
+    padding-left: 30px;
   }
 }
