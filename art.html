@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Art Work - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="art">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">PORTFOLIO / ART WORK</p>
+
+      <h1>Art Work</h1>
+
+      <p class="subpage-intro">
+        Selected visual, physical, and experimental works that explore how design,
+        language, and social interaction can become part of a game system.
+      </p>
+
+      <div class="subpage-content">
+        <article class="project-card">
+          <h2>ちゅうごく현지인처럼 体验</h2>
+
+          <p>
+            <strong>Experimental Game / Live Experience · 2025</strong>
+          </p>
+
+          <p>
+            An experimental live game designed to create a deliberate sense of
+            unfamiliarity. Players enter a socially ambiguous environment where they
+            must interpret hidden rules through observation, body language, spatial
+            behavior, and embodied interaction.
+          </p>
+
+          <p>
+            I served as the lead experience designer, establishing the core concept,
+            rule system, and player interaction structure. I also created key visual
+            assets, including in-game currency, and performed as an in-game character
+            to directly shape how players understood the experience.
+          </p>
+
+          <p>
+            This project explores how game systems can exist beyond formal rules,
+            emerging instead through perception, behavior, and social negotiation.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>From Bug to Meme: How Translation Errors Became Gaming Culture</h2>
+
+          <p>
+            <strong>Handmade Zine / Critical Game Analysis · 2026</strong>
+          </p>
+
+          <p>
+            A handmade zine that explores how technical limitations, localization
+            errors, and system constraints in games can evolve into shared cultural
+            meaning among players.
+          </p>
+
+          <p>
+            The zine is physically assembled using layered layouts, cutouts, and
+            inserted elements. Its visual design mirrors the fragmented and
+            reconstructed feeling of encountering broken or recontextualized language
+            in games.
+          </p>
+
+          <p>
+            Through case studies such as unofficial Pokémon translations and recurring
+            dialogue bugs, the project examines how players reinterpret unintended
+            outputs of game systems. Rather than treating these moments only as
+            errors, the zine presents them as artifacts that become part of a game's
+            cultural identity through repetition and community circulation.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group open" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="true"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block active" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

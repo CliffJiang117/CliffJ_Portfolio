@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>CV - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="cv">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">CURRICULUM VITAE</p>
+
+      <h1>CV</h1>
+
+      <p class="subpage-intro">
+        Cliff Jiang<br />
+        Game design student focused on gameplay systems, player interaction,
+        procedural structures, and experimental game experiences.
+      </p>
+
+      <div class="subpage-content">
+        <article class="project-card">
+          <h2>Education</h2>
+
+          <p>
+            <strong>University of California, Santa Cruz</strong><br />
+            Santa Cruz, CA
+          </p>
+
+          <p>
+            <strong>Expected 2027</strong><br />
+            BA, Art &amp; Design: Games &amp; Playable Media<br />
+            BS, Computer Science: Computer Game Design
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Take Me to the Golden Ring</h2>
+
+          <p>
+            <strong>Platformer · GDevelop 5 · 2024</strong>
+          </p>
+
+          <p>
+            Developed as part of a small team project. Led the design and
+            implementation of a player-driven path creation system where players
+            draw temporary traversal routes directly into the game world.
+            Responsible for gameplay systems, level design, UI, and overall
+            integration.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Matrix</h2>
+
+          <p>
+            <strong>Interactive Narrative · Twine · 2024</strong>
+          </p>
+
+          <p>
+            Designed a time-loop narrative system where progression depends on
+            player knowledge accumulated across repeated playthroughs.
+            Implemented variable-driven narrative changes involving memory,
+            time, and persistent discoveries.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>ちゅうごく현지인처럼 体验</h2>
+
+          <p>
+            <strong>Experimental Game / Live Experience · 2025</strong>
+          </p>
+
+          <p>
+            Served as lead experience designer for a live social gameplay
+            experiment focused on hidden rules, behavioral interpretation, and
+            player-driven meaning-making. Designed gameplay structure,
+            interaction rules, and visual assets while also performing as an
+            in-game participant.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Escape the Factory</h2>
+
+          <p>
+            <strong>Platformer · JavaScript / Phaser · 2025</strong>
+          </p>
+
+          <p>
+            Developed a timing-based traversal system where environmental debris
+            temporarily forms unstable platforms before being destroyed. Focused
+            on environmental hazards, traversal mechanics, and level design.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Shoot to Win!</h2>
+
+          <p>
+            <strong>Top-Down Roguelike Shooter · JavaScript / Phaser · 2025</strong>
+          </p>
+
+          <p>
+            Implemented AI pathfinding, procedural map generation, and
+            terrain-based movement systems affecting navigation and combat flow.
+            Focused on gameplay systems, environmental logic, and replayability.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>From Bug to Meme: How Translation Errors Became Gaming Culture</h2>
+
+          <p>
+            <strong>Handmade Zine / Critical Game Analysis · 2026</strong>
+          </p>
+
+          <p>
+            Created a handmade zine examining how localization errors, bugs, and
+            technical limitations in games evolve into shared cultural meaning
+            through community reinterpretation and circulation.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Presentations / Creative Work</h2>
+
+          <p>
+            <strong>Mobile Suit Gundam: Hathaway's Flash Media Analysis · 2025</strong>
+          </p>
+
+          <p>
+            Critical analysis project exploring narrative structure, political
+            themes, and audience interpretation in animated media.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block active" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

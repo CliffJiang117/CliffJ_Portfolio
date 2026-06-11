@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Contact - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="contact">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">CONTACT</p>
+
+      <h1>Contact</h1>
+
+      <p class="subpage-intro">
+        I am interested in gameplay systems, player interaction, procedural
+        structures, and experimental game experiences. Feel free to contact me
+        for portfolio review, collaboration, internship opportunities, or project
+        discussion.
+      </p>
+
+      <div class="subpage-content">
+        <article class="project-card">
+          <h2>Email</h2>
+
+          <p>
+            <a href="mailto:cliffqingyang.jiang@gmail.com">
+              cliffqingyang.jiang@gmail.com
+            </a>
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Focus Areas</h2>
+
+          <p>
+            Gameplay Systems · Player Interaction · Pathfinding · Procedural
+            Generation · Interaction Systems · Level Design
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Tools & Engines</h2>
+
+          <p>
+            JavaScript · C# · C · Phaser · GDevelop · Twine · Unity · Photoshop
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block active" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

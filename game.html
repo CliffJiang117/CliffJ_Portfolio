@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Game - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="game">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">PORTFOLIO / GAME</p>
+
+      <h1>Game Projects</h1>
+
+      <p class="subpage-intro">
+        Selected game projects, prototypes, and gameplay systems focused on
+        player interaction, system-driven progression, procedural spaces, and
+        experimental rules.
+      </p>
+
+      <div class="subpage-content">
+        <article class="project-card">
+          <h2>Take Me to the Golden Ring</h2>
+
+          <p>
+            <strong>Platformer · GDevelop 5 · 2024</strong>
+          </p>
+
+          <p>
+            A platformer centered around a player-driven path creation mechanic,
+            where players draw their own routes to navigate the environment.
+          </p>
+
+          <p>
+            I led the design and implementation of the core gameplay system, as
+            well as level design, UI, and overall integration. The core mechanic
+            allows players to draw paths using the mouse, generating temporary
+            platforms that enable traversal across gaps and obstacles.
+          </p>
+
+          <p>
+            Instead of relying on fixed level geometry, players actively construct
+            their own movement routes, turning navigation into a creative
+            problem-solving process. The level design places obstacles and
+            collectibles in positions that require player-generated solutions.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Matrix</h2>
+
+          <p>
+            <strong>Interactive Narrative · Twine · 2024</strong>
+          </p>
+
+          <p>
+            A Twine-based interactive narrative centered on a time loop system,
+            where progression is driven by player knowledge rather than
+            traditional collection or combat mechanics.
+          </p>
+
+          <p>
+            The game places the player in a repeating cycle where death resets
+            the world, but key knowledge persists across loops. Through repeated
+            playthroughs, players gradually unlock new dialogue options,
+            narrative paths, and strategic choices based on what they have
+            learned.
+          </p>
+
+          <p>
+            The system uses variables to track time, memory, and critical
+            discoveries, allowing story events and character interactions to
+            change dynamically. Certain encounters are intentionally unwinnable
+            in early loops, requiring players to experiment, fail, and accumulate
+            understanding before they can progress.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Escape the Factory</h2>
+
+          <p>
+            <strong>Platformer · JavaScript / Phaser · 2025</strong>
+          </p>
+
+          <p>
+            A platformer centered on timing-based traversal, where players
+            navigate industrial hazards and collect key items to unlock
+            progression and hidden paths.
+          </p>
+
+          <p>
+            I developed this project using Phaser, serving as the programmer and
+            level designer. The game emphasizes core platforming mechanics,
+            including precise jumping, hazard avoidance, and collectible-driven
+            progression.
+          </p>
+
+          <p>
+            I implemented an environmental system where falling debris lands on a
+            crusher, temporarily forming platforms that are gradually destroyed.
+            These temporary platforms function as both traversal tools and
+            environmental hazards, creating time-sensitive movement challenges.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Shoot to Win!</h2>
+
+          <p>
+            <strong>Top-Down Roguelike Shooter · JavaScript / Phaser · 2025</strong>
+          </p>
+
+          <p>
+            A top-down roguelike shooter where players survive against waves of
+            enemies in procedurally generated environments.
+          </p>
+
+          <p>
+            I served as a programmer focusing on movement systems, AI behavior,
+            and procedural level generation. My primary contribution was
+            implementing pathfinding for player and enemy navigation, along with
+            a terrain-based movement system where different surfaces affect
+            speed.
+          </p>
+
+          <p>
+            I also developed the procedural map generation system. To ensure
+            consistent navigation and avoid disconnected areas, I structured the
+            algorithm around a main-road network with branching paths. This
+            project explores how procedural generation, terrain rules, and AI
+            pathfinding can work together to create replayable combat spaces.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group open" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="true"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block active" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

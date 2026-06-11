@@ -53,14 +53,108 @@
         .map-active
   ========================================================== -->
   <main id="map-screen" class="screen map-screen" aria-label="Project map screen">
-    <!-- Background image layer -->
-    <div class="map-bg" aria-hidden="true"></div>
+    <!-- =======================================================
+  MAP WORLD
+    This layer contains the actual map image and clickable map points.
+    JS will zoom this whole layer toward the selected point.
+======================================================== -->
+<div class="map-world" id="mapWorld">
+  <!-- Background image layer -->
+  <div class="map-bg" aria-hidden="true"></div>
 
-    <!-- Dark gradient / vignette overlay -->
-    <div class="map-overlay" aria-hidden="true"></div>
+  <!-- Clickable points on the map.
+       --x and --y decide the point position on screen.
+       data-section must match the right-side UI button.
+       data-url is the page to open after the animation.
+  -->
+  <div class="map-points" aria-label="Map interaction points">
+    <button
+      class="map-point"
+      type="button"
+      data-section="about"
+      data-url="about.html"
+      style="--x: 42%; --y: 38%;"
+      aria-label="Open About page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">ABOUT</span>
+    </button>
 
-    <!-- Sci-fi grid overlay -->
-    <div class="map-grid" aria-hidden="true"></div>
+    <button
+      class="map-point"
+      type="button"
+      data-section="game"
+      data-url="game.html"
+      style="--x: 54%; --y: 52%;"
+      aria-label="Open Game portfolio page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">GAME</span>
+    </button>
+
+    <button
+      class="map-point"
+      type="button"
+      data-section="art"
+      data-url="art.html"
+      style="--x: 34%; --y: 58%;"
+      aria-label="Open Art Work portfolio page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">ART</span>
+    </button>
+
+    <button
+      class="map-point"
+      type="button"
+      data-section="sound"
+      data-url="sound.html"
+      style="--x: 62%; --y: 34%;"
+      aria-label="Open Sound portfolio page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">SOUND</span>
+    </button>
+
+    <button
+      class="map-point"
+      type="button"
+      data-section="cv"
+      data-url="cv.html"
+      style="--x: 47%; --y: 67%;"
+      aria-label="Open CV page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">CV</span>
+    </button>
+
+    <button
+      class="map-point"
+      type="button"
+      data-section="contact"
+      data-url="contact.html"
+      style="--x: 70%; --y: 60%;"
+      aria-label="Open Contact page"
+    >
+      <span class="point-core"></span>
+      <span class="point-label">CONTACT</span>
+    </button>
+  </div>
+</div>
+
+<!-- Dark gradient / vignette overlay -->
+<div class="map-overlay" aria-hidden="true"></div>
+
+<!-- Sci-fi grid overlay -->
+<div class="map-grid" aria-hidden="true"></div>
+
+<!-- Four edge lines that move toward the selected map point -->
+<div class="target-lines" id="targetLines" aria-hidden="true">
+  <span class="target-line line-top"></span>
+  <span class="target-line line-bottom"></span>
+  <span class="target-line line-left"></span>
+  <span class="target-line line-right"></span>
+</div>
 
 
     <!-- =======================================================
@@ -127,7 +221,7 @@
 
 
     <!-- Temporary center title. This will be replaced by actual content panels. -->
-    <h2 class="map-title">PROJECT MAP</h2>
+    <!-- <h2 class="map-title">PROJECT MAP</h2> -->
   </main>
 
 

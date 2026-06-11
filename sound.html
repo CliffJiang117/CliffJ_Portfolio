@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Sound - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="sound">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">SOUND</p>
+
+      <h1>Sound Projects</h1>
+
+      <p class="subpage-intro">
+        Selected sound projects.
+      </p>
+
+      
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group open" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="true"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block active" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

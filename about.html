@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>About - Cliff Jiang Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="subpage.css" />
+</head>
+
+<body class="subpage" data-page="about">
+  <div class="subpage-grid" aria-hidden="true"></div>
+
+  <main class="subpage-main">
+    <section class="subpage-panel">
+      <p class="subpage-kicker">SYSTEM DESIGN · PLAYER INTERACTION · GAMEPLAY SYSTEMS</p>
+
+      <h1>About Me</h1>
+
+      <p class="subpage-intro">
+        Hi, my name is Cliff Jiang. I am a junior at the University of California,
+        Santa Cruz, studying game design.
+      </p>
+
+      <div class="subpage-content">
+        <article class="project-card">
+          <h2>Design Focus</h2>
+          <p>
+            I design interactive systems that shape how players behave and understand
+            a game. In my projects, I focus on how players learn rules through
+            interaction, whether by drawing paths, repeating time loops, or interpreting
+            unclear social cues.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>System-Based Interaction</h2>
+          <p>
+            I am interested in projects where simple rules can lead to complex player
+            behavior over time. In one project, players construct their own routes
+            instead of following predefined paths. In another, progression depends on
+            what the player remembers across multiple loops rather than what they
+            collect.
+          </p>
+        </article>
+
+        <article class="project-card">
+          <h2>Player Discovery</h2>
+          <p>
+            I am particularly interested in systems where players are not just following
+            instructions, but actively discovering and shaping the structure of the game
+            itself.
+          </p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <aside class="right-ui subpage-right-ui" aria-label="Right side interface">
+    <nav class="right-nav" aria-label="Subpage navigation">
+      <button class="nav-block return-main" id="returnMainBtn" type="button">
+        <span class="nav-label">RETURN MAIN</span>
+      </button>
+
+      <button class="nav-block active" type="button" data-url="about.html">
+        <span class="nav-label">ABOUT</span>
+      </button>
+
+      <div class="nav-group portfolio-group" id="portfolioGroup">
+        <button
+          class="nav-block portfolio-main"
+          id="portfolioBtn"
+          type="button"
+          aria-expanded="false"
+          aria-controls="portfolioSubmenu"
+        >
+          <span class="nav-label">PORTFOLIO</span>
+          <span class="nav-arrow" aria-hidden="true">⌄</span>
+        </button>
+
+        <div class="portfolio-submenu" id="portfolioSubmenu">
+          <button class="sub-block" type="button" data-url="game.html">
+            GAME
+          </button>
+
+          <button class="sub-block" type="button" data-url="art.html">
+            ART WORK
+          </button>
+
+          <button class="sub-block" type="button" data-url="sound.html">
+            SOUND
+          </button>
+        </div>
+      </div>
+
+      <button class="nav-block" type="button" data-url="cv.html">
+        <span class="nav-label">CV</span>
+      </button>
+
+      <button class="nav-block" type="button" data-url="contact.html">
+        <span class="nav-label">CONTACT</span>
+      </button>
+    </nav>
+  </aside>
+
+  <script src="subpage.js"></script>
+</body>
+</html>

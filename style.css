@@ -244,6 +244,269 @@ button {
   color: var(--color-cyan);
 }
 
+.map-bg {
+  z-index: 1;
+}
+
+.map-overlay {
+  z-index: 2;
+}
+
+.map-grid {
+  z-index: 3;
+}
+
+.map-title {
+  z-index: 6;
+}
+
+/* =========================================================
+  comment update later
+   MAP WORLD / INTERACTION POINTS
+   The map image and map points live inside .map-world.
+   JS zooms this layer toward the selected point.
+========================================================= */
+
+.map-world {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+
+  transform-origin: var(--focus-x, 50%) var(--focus-y, 50%);
+  transform: scale(1);
+
+  transition:
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s ease;
+}
+
+.map-screen.is-focusing .map-world {
+  transform: scale(1.55);
+  filter: brightness(1.15) contrast(1.1);
+}
+
+.map-screen.is-focusing .map-bg {
+  animation-play-state: paused;
+}
+
+.map-screen.is-leaving {
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+
+.map-point {
+  position: absolute;
+  left: var(--x);
+  top: var(--y);
+
+  width: 26px;
+  height: 26px;
+
+  transform: translate(-50%, -50%);
+
+  background: rgba(18, 38, 56, 0.92);
+  border: 1px solid rgba(140, 245, 255, 0.95);
+  border-radius: 6px;
+
+  box-shadow:
+    inset 0 0 16px rgba(125, 249, 255, 0.22),
+    0 0 12px rgba(125, 249, 255, 0.45),
+    0 0 26px rgba(125, 249, 255, 0.28);
+
+  cursor: pointer;
+  z-index: 3;
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background var(--transition-fast);
+}
+
+.map-point:hover,
+.map-point.active {
+  transform: translate(-50%, -50%) scale(1.28);
+
+  border-color: rgba(180, 250, 255, 1);
+  background: rgba(35, 85, 105, 0.95);
+
+  box-shadow:
+    inset 0 0 20px rgba(125, 249, 255, 0.32),
+    0 0 18px rgba(125, 249, 255, 0.75),
+    0 0 38px rgba(125, 249, 255, 0.45);
+}
+
+.map-point {
+  animation: pointPulse 1.8s ease-in-out infinite;
+}
+@keyframes pointPulse {
+  0%,
+  100% {
+    box-shadow:
+      inset 0 0 16px rgba(125, 249, 255, 0.20),
+      0 0 10px rgba(125, 249, 255, 0.35),
+      0 0 22px rgba(125, 249, 255, 0.20);
+  }
+
+  50% {
+    box-shadow:
+      inset 0 0 18px rgba(125, 249, 255, 0.28),
+      0 0 18px rgba(125, 249, 255, 0.65),
+      0 0 34px rgba(125, 249, 255, 0.35);
+  }
+}
+
+.point-core {
+  position: absolute;
+  inset: 6px;
+
+  background: rgba(170, 250, 255, 1);
+  border-radius: 3px;
+
+  box-shadow:
+    0 0 10px rgba(170, 250, 255, 0.95),
+    0 0 18px rgba(125, 249, 255, 0.75),
+    0 0 28px rgba(125, 249, 255, 0.45);
+}
+
+.point-label {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 8px);
+
+  transform: translateX(-50%);
+
+  padding: 4px 8px;
+
+  font-family: "Courier New", monospace;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  white-space: nowrap;
+
+  color: rgba(230, 250, 255, 0.9);
+  background: rgba(5, 12, 20, 0.72);
+  border: 1px solid rgba(125, 249, 255, 0.24);
+  border-radius: 4px;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    opacity var(--transition-fast),
+    transform var(--transition-fast);
+}
+
+.map-point:hover .point-label,
+.map-point.active .point-label {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-4px);
+}
+
+
+/* =========================================================
+   TARGET LINES
+   Four lines come from the screen edges and stop at the
+   selected map point's box edge.
+========================================================= */
+
+.target-lines {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+
+  opacity: 0;
+  pointer-events: none;
+
+  transition: opacity 0.2s ease;
+}
+
+.map-screen.is-targeting .target-lines {
+  opacity: 1;
+}
+
+.target-line {
+  position: absolute;
+  display: block;
+
+  background: rgba(125, 249, 255, 0.9);
+
+  box-shadow:
+    0 0 8px rgba(125, 249, 255, 0.8),
+    0 0 22px rgba(125, 249, 255, 0.45);
+}
+
+/* From top screen edge to the top edge of the target */
+.line-top {
+  left: var(--target-x, 50%);
+  top: 0;
+
+  width: 2px;
+  height: var(--target-top, 50vh);
+
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: top center;
+
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.map-screen.is-targeting .line-top {
+  transform: translateX(-50%) scaleY(1);
+}
+
+/* From bottom screen edge to the bottom edge of the target */
+.line-bottom {
+  left: var(--target-x, 50%);
+  top: var(--target-bottom, 50vh);
+
+  width: 2px;
+  height: calc(100vh - var(--target-bottom, 50vh));
+
+  transform: translateX(-50%) scaleY(0);
+  transform-origin: bottom center;
+
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.map-screen.is-targeting .line-bottom {
+  transform: translateX(-50%) scaleY(1);
+}
+
+/* From left screen edge to the left edge of the target */
+.line-left {
+  left: 0;
+  top: var(--target-y, 50%);
+
+  width: var(--target-left, 50vw);
+  height: 2px;
+
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: left center;
+
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.map-screen.is-targeting .line-left {
+  transform: translateY(-50%) scaleX(1);
+}
+
+/* From right screen edge to the right edge of the target */
+.line-right {
+  left: var(--target-right, 50vw);
+  top: var(--target-y, 50%);
+
+  width: calc(100vw - var(--target-right, 50vw));
+  height: 2px;
+
+  transform: translateY(-50%) scaleX(0);
+  transform-origin: right center;
+
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.map-screen.is-targeting .line-right {
+  transform: translateY(-50%) scaleX(1);
+}
 
 /* =========================================================
    6. NAVIGATION UI
@@ -325,6 +588,16 @@ button {
     0 0 24px rgba(80, 220, 255, 0.28);
 }
 
+.nav-block.active,
+.sub-block.active {
+  border-color: rgba(125, 249, 255, 0.95);
+
+  background: rgba(20, 65, 85, 0.72);
+
+  box-shadow:
+    inset 0 0 22px rgba(80, 220, 255, 0.18),
+    0 0 30px rgba(80, 220, 255, 0.36);
+}
 
 /* =========================================================
    7. PORTFOLIO SUBMENU

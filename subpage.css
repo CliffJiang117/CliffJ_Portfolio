@@ -1,0 +1,158 @@
+/* =========================================================
+   SUBPAGE TEMPLATE
+   Shared layout for about / game / art / sound / cv / contact pages.
+   These pages do not use the main map background.
+========================================================= */
+
+body.subpage {
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  min-height: 100vh;
+
+  background:
+    radial-gradient(circle at 20% 20%, rgba(24, 48, 71, 0.75), transparent 32%),
+    radial-gradient(circle at 80% 75%, rgba(20, 65, 85, 0.45), transparent 34%),
+    var(--color-bg);
+
+  color: var(--color-text);
+}
+
+.subpage-grid {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+
+  background-image:
+    linear-gradient(rgba(125, 249, 255, 0.055) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(125, 249, 255, 0.055) 1px, transparent 1px);
+  background-size: 60px 60px;
+
+  opacity: 0.7;
+  animation: mapMove 18s linear infinite;
+
+  pointer-events: none;
+}
+
+.subpage-main {
+  position: relative;
+  z-index: 2;
+
+  min-height: 100vh;
+  padding: 80px calc(var(--nav-width) + 90px) 80px 80px;
+
+  display: flex;
+  align-items: center;
+}
+
+.subpage-panel {
+  width: min(920px, 100%);
+  padding: 42px 48px;
+
+  background: rgba(8, 18, 30, 0.76);
+  border: 1px solid rgba(105, 220, 255, 0.35);
+  border-radius: 22px 4px 22px 4px;
+
+  box-shadow:
+    inset 0 0 28px rgba(80, 200, 255, 0.08),
+    0 0 34px rgba(80, 200, 255, 0.16);
+
+  backdrop-filter: blur(10px);
+}
+
+.subpage-kicker {
+  margin-bottom: 14px;
+
+  font-family: "Courier New", monospace;
+  font-size: 13px;
+  letter-spacing: 3px;
+
+  color: rgba(125, 249, 255, 0.78);
+}
+
+.subpage-panel h1 {
+  margin-bottom: 20px;
+
+  font-size: clamp(42px, 6vw, 82px);
+  line-height: 0.95;
+  letter-spacing: 4px;
+
+  color: rgba(230, 250, 255, 0.96);
+  text-shadow: 0 0 22px rgba(125, 249, 255, 0.25);
+}
+
+.subpage-intro {
+  max-width: 680px;
+  margin-bottom: 34px;
+
+  font-size: 17px;
+  line-height: 1.7;
+  color: rgba(184, 220, 224, 0.86);
+}
+
+.subpage-content {
+  display: grid;
+  gap: 16px;
+}
+
+.project-card {
+  padding: 20px 22px;
+
+  background: rgba(5, 20, 34, 0.55);
+  border: 1px solid rgba(105, 220, 255, 0.22);
+  border-left: 4px solid rgba(125, 249, 255, 0.65);
+  border-radius: 14px 4px 4px 14px;
+
+  box-shadow:
+    inset 0 0 16px rgba(80, 200, 255, 0.05),
+    0 0 14px rgba(80, 200, 255, 0.08);
+}
+
+.project-card h2 {
+  margin-bottom: 8px;
+
+  font-family: "Courier New", monospace;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+
+  color: rgba(230, 250, 255, 0.95);
+}
+
+.project-card p {
+  line-height: 1.65;
+  color: rgba(184, 220, 224, 0.78);
+}
+
+.return-main {
+  color: rgba(5, 18, 30, 0.96);
+  background: rgba(125, 249, 255, 0.78);
+  border-color: rgba(190, 255, 255, 0.95);
+
+  box-shadow:
+    inset 0 0 18px rgba(255, 255, 255, 0.18),
+    0 0 24px rgba(125, 249, 255, 0.28);
+}
+
+.return-main:hover {
+  background: rgba(180, 255, 255, 0.92);
+}
+
+@media (max-width: 800px) {
+  body.subpage {
+    overflow-y: auto;
+  }
+
+  .subpage-main {
+    padding: 80px 24px 360px 24px;
+    align-items: flex-start;
+  }
+
+  .subpage-panel {
+    padding: 30px 24px;
+  }
+
+  .subpage-panel h1 {
+    font-size: 42px;
+    letter-spacing: 2px;
+  }
+}
